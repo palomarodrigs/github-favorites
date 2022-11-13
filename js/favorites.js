@@ -129,6 +129,7 @@ export class FavoritesView extends Favorites {
   removeALLTr() {
     this.tbody.querySelectorAll("tr").forEach((tr) => {
       tr.remove();
+      this.update();
     });
   }
 }
