@@ -1,17 +1,4 @@
-export class GithubUser {
-  static search(username) {
-    const endpoint = `https://api.github.com/users/${username}`;
-
-    return fetch(endpoint)
-      .then((data) => data.json())
-      .then(({ login, name, public_repos, followers }) => ({
-        login,
-        name,
-        public_repos,
-        followers,
-      }));
-  }
-}
+import { GithubUser } from "./GithubUser.js";
 
 export class Favorites {
   constructor(root) {
@@ -29,6 +16,12 @@ export class Favorites {
 
   async add(username) {
     try {
+      const userExists = this.entries.find((entry) => entry.login === username);
+
+      if (userExists) {
+        throw new Error("Usuário já adicionado");
+      }
+
       const user = await GithubUser.search(username);
       if (user.login === undefined) {
         throw new Error("Usuário não encontrado!");
@@ -75,30 +68,42 @@ export class FavoritesView extends Favorites {
   update() {
     this.removeALLTr();
 
-    this.entries.forEach((user) => {
-      const row = this.createRow();
+    if (this.entries.length === 0) {
+      this.tbody.innerHTML = `
+            <tr>
+              <td class="star" colspan="100%">
+                <img class="star-img" src="./assets/star-icon.svg" alt="" />
+                <p class="star-text">Nenhum favorito ainda</p>
+              </td>
+            </tr>`;
+    } else {
+      this.entries.forEach((user) => {
+        const row = this.createRow();
 
-      row.querySelector(
-        ".user img"
-      ).src = `https://github.com/${user.login}.png`;
-      row.querySelector(".user img").alt = "imagem de ${user.name}";
-      row.querySelector(".user p").textContent = user.name;
-      row.querySelector(".user span").textContent = user.login;
-      row.querySelector(".repositories").textContent = user.public_repos;
-      row.querySelector(".followers").textContent = user.followers;
+        row.querySelector(
+          ".user img"
+        ).src = `https://github.com/${user.login}.png`;
+        row.querySelector(".user img").alt = "imagem de ${user.name}";
+        row.querySelector(".user p").textContent = user.name;
+        row.querySelector(".user a").href = `https://github.com/${user.login}`;
+        row.querySelector(".user span").textContent = user.login;
+        row.querySelector(".repositories").textContent = user.public_repos;
+        row.querySelector(".followers").textContent = user.followers;
 
-      row.querySelector(".remove").onclick = () => {
-        const isOk = confirm("Tem certeza que deseja deletar essa linha?");
-        if (isOk) {
-          this.delete(user);
-        }
-      };
+        row.querySelector(".remove").onclick = () => {
+          const isOk = confirm("Tem certeza que deseja deletar essa linha?");
+          if (isOk) {
+            this.delete(user);
+          }
+        };
 
-      this.tbody.append(row);
-    });
+        this.tbody.append(row);
+      });
+    }
   }
-
   createRow() {
+    const row = document.createElement("tr");
+
     const tr = document.createElement("tr");
 
     tr.innerHTML = `

@@ -21,12 +21,12 @@
         <img class="logo" src="./assets/logo.svg" alt="Logo do site" />
         <div class="search">
           <label class="sr-only" for="input-search"
-            >Digite o Github username que quer favoritar</label
+            >Digite o username que quer favoritar</label
           >
           <input
             id="input-search"
             type="text"
-            placeholder="Digite o Github username que quer favoritar"
+            placeholder="Digite o username que quer favoritar"
           />
           <button id="add-user">
             <img
@@ -37,17 +37,27 @@
           </button>
         </div>
       </nav>
-      <table>
-        <thead>
-          <tr>
-            <th>Usuário</th>
-            <th>Repositories</th>
-            <th>Followers</th>
-            <th>Ação</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div class="table-wrapper">
+        <div class="table-group">
+          <table>
+            <thead>
+              <tr>
+                <th>Usuário</th>
+                <th>Repositories</th>
+                <th>Followers</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <footer>
+        feito com ❤️ por
+        <a href="https://instagram.com/palomarodrigsb" target="_blank"
+          ><span>@palomarodrigsb</span></a
+        >
+      </footer>
     </div>
     <script src="./js/main.js" type="module"></script>
   </body>
