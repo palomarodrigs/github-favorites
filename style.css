@@ -46,7 +46,6 @@
 
   thead th {
     padding: 10px;
-    font-size: 10px;
   }
 
   .search {
@@ -86,7 +85,7 @@
   }
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   nav {
     flex-direction: column;
     align-items: center;
@@ -106,7 +105,7 @@
   .search button {
     margin-top: 2rem;
   }
-}
+} */
 
 body {
   font-size: 1.6rem;
@@ -326,7 +325,7 @@ td .remove:hover {
 /*NO FAVORITES*/
 .star {
   text-align: center;
-  padding-top: 21rem;
+  padding-top: 15rem;
   margin-bottom: 900px;
 }
 
@@ -340,7 +339,7 @@ td .remove:hover {
   font-family: var(--ff-secondary);
   font-style: normal;
   font-weight: 700;
-  font-size: 4rem;
+  font-size: 2rem;
   line-height: 2.5rem;
 
   display: flex;
@@ -348,7 +347,7 @@ td .remove:hover {
   justify-content: center;
   align-items: center;
 
-  padding: 3rem 0 25rem 0;
+  padding: 3rem 0 15rem 0;
   color: var(--text-color-star);
 }
 
@@ -363,7 +362,7 @@ td .remove:hover {
 
 footer {
   color: var(--text-color);
-  font-size: 2rem;
+  font-size: 1.4rem;
   line-height: 2.8rem;
   text-align: center;
 
@@ -371,7 +370,7 @@ footer {
 }
 
 footer span {
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 
 footer a {
@@ -388,7 +387,42 @@ footer a:hover {
 
 @media (min-width: 768px) {
   table th {
-    font-size: 14px;
-    padding: 13px;
+    font-size: 1.4rem;
+    padding: 1.9rem;
+  }
+
+  table td {
+    padding: 1.5rem;
+    text-align: left;
+    align-items: center;
+  }
+
+  td .remove {
+    font-size: 1.4rem;
+  }
+
+  table td {
+    font-size: 1.4rem;
+  }
+
+  span {
+    font-size: 1.4rem;
+  }
+
+  td.user a p {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  .star-text {
+    font-size: 3rem;
+  }
+
+  footer {
+    font-size: 2rem;
+  }
+
+  footer span {
+    font-size: 2rem;
   }
 }
