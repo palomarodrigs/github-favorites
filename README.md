@@ -15,7 +15,7 @@
 
 <p align="center"> Mobile</p>
 <p align="center">
-  <img alt="usuarios do github favoritos no smartphone" src=".github/mobile.jpg" width="100%">
+  <img alt="usuarios do github favoritos no smartphone" src=".github/mobile.jpg" width="50%">
 </p>
 
 <br/>
